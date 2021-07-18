@@ -1,0 +1,8 @@
+package methods;
+
+public class ConversionMethods {
+
+	static void fahrenhietToCelcius(double input) {
+		return (this.input - 32) / 1.8;
+	}
+}

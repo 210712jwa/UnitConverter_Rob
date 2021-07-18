@@ -1,0 +1,38 @@
+package methods;
+
+public class ConversionMethods {
+
+	public static double fahrenheitToCelcius(double f) {
+		double c = (f - 32) / 1.8;
+		return c;
+	}
+	
+	public static double fahrenheitToKelvin(double f) {
+		double c = (f-32) / 1.8;
+		double k = (c + 273.15);
+		return k;
+	}
+	
+	public static double celciusToFahrenheit(double c) {
+		double f = (c * 1.8) + 32;
+		return f;
+	}
+	
+	public static double celciusToKelvin(double c) {
+		double k = c + 273.15;
+		return k;
+	}
+	
+	public static double kelvinToFarenheit(double k) {
+		double c = k - 273.15;
+		double f = celciusToFahrenheit(c);
+		return f;
+	}
+	
+	public static double kelvinToCelcius(double k) {
+		double c = k - 273.15;
+		return c;
+	}
+	
+	
+}

@@ -1,0 +1,204 @@
+package main;
+import java.util.Scanner;
+
+public class Converter {
+ 
+	// Conversion factors are listed below: 
+	double cupToTsp = 48.0; 
+	double mileToKm = 1.60934;
+	double usGallontoImperial = 0.832674; 
+	
+	public static void main(String[] args) {
+		
+		Scanner scanner = new Scanner(System.in);
+		// Here, we are creating an instance of the Scanner class; 
+		// we are calling that instance 'scanner.'
+		
+//		System.out.println("Hi, I bet you're here to convert some units of length.");
+//		System.out.println(" ");
+//		System.out.println("Please select the type of conversion you would like to perform:");
+//		System.out.println(" ");
+//		System.out.println("Enter [1] if you have units of distance.");
+//		System.out.println("Enter [2] if you have units of volume.");
+//
+//		String firstInput = scanner.nextLine();
+//		
+//		int conversionType = Integer.parseInt(firstInput);
+//		
+//		if (conversionType == 1) {
+//			System.out.println("You've opted to perform a distance conversion.");
+//		} else if (conversionType == 2) {
+//			System.out.println("You've opted to perform a volume conversion.");
+//		} else {
+//			System.out.println("You have not selected a valid option.");
+//			System.out.println("Please rerun the program and follow the prompts as given.");
+//			return;
+//		}
+//		
+//		System.out.println("");
+		
+
+		
+		
+		System.out.println("Hi, I bet you're here to convert units of temperature.");
+		System.out.println(" ");
+		System.out.println("Please select your unit of measurement below.");
+		System.out.println(" ");
+		System.out.println("Enter [1] if your measurement is in Fahrenheit.");
+		System.out.println("Enter [2] if your measurement is in Celcius");
+		System.out.println("Enter [3] if your measurement is in Kelvin");
+		System.out.println("Enter [4] if you would like to exit.");
+		
+		int measurementType = scanner.nextInt();
+		
+		if (measurementType == 4) {
+			System.out.println("Now exiting--see you later.");
+			return;
+		} // Exits out of application. 
+		
+		
+		System.out.println("***********************************************");
+		
+		switch (measurementType) {
+		case 1 : 
+			System.out.println("You have specified that your measurement is in Fahrenheit.");
+			System.out.println(" ");
+			System.out.println("Please enter your amount below (i.e. enter '68' for 68 degrees F).");
+			break;
+		case 2 :
+			System.out.println("You have specified that your measurement is in Celcius.");
+			System.out.println(" ");
+			System.out.println("Please enter your amount below (i.e. enter '20' for 20 degrees C).");
+			break;
+		case 3 : 
+			System.out.println("You have specified that your measurement is in Kelvin.");
+			System.out.println(" ");
+			System.out.println("Please enter your amount below (i.e. enter '293' for 293 K).");
+			break;
+		default : 
+			System.out.println("You have not selected a valid option.");
+			System.out.println("You will be exited out of the application.");
+			System.out.println("Please re-run and follow the prompts as given.");
+			return; // exits out.
+		} 
+		
+		double amount = scanner.nextDouble();
+		
+		System.out.println("***********************************************");
+		
+		switch (measurementType) {
+		case 1 : 
+			System.out.println("Your input is " + amount + " degrees F.");
+			if (amount < -459.67) {
+				System.out.println("This input is below absolute zero.");
+				System.out.println("This is not physically possible.");
+				System.out.println("You will be exited out of the application.");
+				System.out.println("Please re-run and follow the prompts as given.");
+				return;
+			}
+			break;
+		case 2 : 
+			System.out.println("Your input is " + amount + " degrees C.");
+			if (amount < -273.15) {
+				System.out.println("This input is below absolute zero.");
+				System.out.println("This is not physically possible.");
+				System.out.println("You will be exited out of the application.");
+				System.out.println("Please re-run and follow the prompts as given.");
+				return;
+			}
+			break;
+		case 3 : 
+			System.out.println("Your input is " + amount + " degrees K.");
+			if (amount < 0) {
+				System.out.println("This input is below absolute zero.");
+				System.out.println("This is not physically possible.");
+				System.out.println("You will be exited out of the application.");
+				System.out.println("Please re-run and follow the prompts as given.");
+				return;
+			}
+			break;
+		}
+		
+		System.out.println(" ");
+		System.out.println("What unit of temperature would you like to convert your input to?");
+		System.out.println("Enter [1] for Fahrenheit");
+		System.out.println("Enter [2] Celcius");
+		System.out.println("Enter [3] Kelvin");
+		
+		int convertTo = scanner.nextInt();
+		
+		System.out.println("***********************************************");
+		
+		switch (convertTo) {
+		case 1 :
+			// converts to Fahrenheit.
+			if (measurementType == 1) {
+				System.out.println("Your input is already in Fahrenheit.");
+				System.out.println("You will be exited out of the application.");
+				System.out.println("Please re-run and opt to convert your input to either Celcius or Kelvin.");
+				return;
+			}
+			else if (measurementType == 2) {
+				double celciusToF = (amount * 1.8) + 32;
+				System.out.println(amount + " C is equal to " + celciusToF + " F.");
+				System.out.println("Thank you for using Converter. See you again soon.");
+				return;
+			}
+			else if (measurementType == 3) {
+				double kelvinToF = ((amount - 273.15) * 1.8 + 32);
+				System.out.println(amount + " K is equal to " + kelvinToF + " F.");
+				System.out.println("Thank you for using Converter. See you again soon.");
+				return;
+			}
+			break;
+		case 2 :
+			// converts to Celcius.
+			if (measurementType == 2) {
+				System.out.println("Your input is already in Celcius.");
+				System.out.println("You will be exited out of the application.");
+				System.out.println("Please re-run and opt to convert your input to either Fahrenheit or Kelvin.");
+				return;
+			}
+			else if (measurementType == 1 ) {
+				double fahrenheitToC = (amount - 32) / 1.8;
+				System.out.println(amount + " F is equal to " + fahrenheitToC + " C.");
+				System.out.println("Thank you for using Converter. See you again soon.");
+				return;
+			}
+			else if (measurementType == 3) {
+				double kelvinToC = amount - 273.15;
+				System.out.println(amount + " K is equal to " + kelvinToC + " C.");
+				System.out.println("Thank you for using Converter. See you again soon.");
+				return;
+			}
+			break;
+		case 3 : 
+			// converts to Kelvin. 
+			if (measurementType == 3) {
+				System.out.println("Your input is already in Kelvin.");
+				System.out.println("You will be exited out of the application.");
+				System.out.println("Please re-run and opt to convert your input to either Fahrenheit or Celcius.");
+				return;
+			}
+			else if (measurementType == 1) {
+				double fahrenheitToK = ((amount - 273) * 1.8) + 32;
+				System.out.println(amount + " F is equal to " + fahrenheitToK + " K.");
+				System.out.println("Thank you for using Converter. See you again soon.");
+				return;
+			}
+			else if (measurementType == 2) {
+				double celciusToK = amount + 273.15;
+				System.out.println(amount + " F is equal to " + celciusToK + " K.");
+				System.out.println("Thank you for using Converter. See you again soon.");
+				return;
+			}
+			break;
+		}
+		
+		
+		
+		
+
+		
+	} //end of main
+}
